@@ -10,7 +10,7 @@ services:
             - "8000:80"
         # монтируем директории, слева директории на основной машине, справа - куда они монтируются в контейнере
         volumes:
-            - ./Hosts:/etc/nginx/conf.d
+            - ./Host:/etc/nginx/conf.d
             - ./WWW:/var/www
             - ./Logs:/var/log/nginx
         # nginx должен общаться с php контейнером
@@ -18,7 +18,7 @@ services:
             - php
     php:
         # у нас свой образ для PHP, указываем путь к нему и говорим что его надо собрать
-        build: ./Images/php
+        build: ./Images/PHP
         # этот образ будет общаться с mysql
         links:
             - mysql
